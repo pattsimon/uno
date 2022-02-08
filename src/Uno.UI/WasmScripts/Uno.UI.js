@@ -783,6 +783,40 @@ var Uno;
                 element.style.setProperty(params.Name, this.handleToString(params.Value));
                 return true;
             }
+            setSolidColorBorder(htmlId, colorHex, width) {
+                const element = this.getView(htmlId);
+                const elementStyle = element.style;
+                elementStyle.setProperty("border", "");
+                elementStyle.setProperty("border-style", "solid");
+                elementStyle.setProperty("border-color", colorHex);
+                elementStyle.setProperty("border-width", width);
+                return true;
+            }
+            /**
+            * Set border to solid color brush.
+            */
+            setSolidColorBorderNative(pParams) {
+                const params = WindowManagerSetSolidColorBorderParams.unmarshal(pParams);
+                return this.setSolidColorBorder(params.HtmlId, params.ColorHex, params.Width);
+            }
+            setGradientBorder(htmlId, borderImage, width) {
+                const element = this.getView(htmlId);
+                const elementStyle = element.style;
+                elementStyle.setProperty("border", "");
+                elementStyle.setProperty("border-style", "solid");
+                elementStyle.setProperty("border-color", "");
+                elementStyle.setProperty("border-image", borderImage);
+                elementStyle.setProperty("border-width", width);
+                elementStyle.setProperty("border-image-slice", "1");
+                return true;
+            }
+            /**
+            * Set border to gradient brush.
+            */
+            setGradientBorderNative(pParams) {
+                const params = WindowManagerSetGradientBorderParams.unmarshal(pParams);
+                return this.setGradientBorder(params.HtmlId, params.BorderImage, params.Width);
+            }
             setArrangeProperties(elementId) {
                 const element = this.getView(elementId);
                 this.setAsArranged(element);
@@ -5319,6 +5353,34 @@ class WindowManagerSetElementTransformParams {
     }
 }
 /* TSBindingsGenerator Generated code -- this code is regenerated on each build */
+class WindowManagerSetGradientBorderParams {
+    static unmarshal(pData) {
+        const ret = new WindowManagerSetGradientBorderParams();
+        {
+            ret.HtmlId = Number(Module.getValue(pData + 0, "*"));
+        }
+        {
+            const ptr = Module.getValue(pData + 4, "*");
+            if (ptr !== 0) {
+                ret.BorderImage = String(Module.UTF8ToString(ptr));
+            }
+            else {
+                ret.BorderImage = null;
+            }
+        }
+        {
+            const ptr = Module.getValue(pData + 8, "*");
+            if (ptr !== 0) {
+                ret.Width = String(Module.UTF8ToString(ptr));
+            }
+            else {
+                ret.Width = null;
+            }
+        }
+        return ret;
+    }
+}
+/* TSBindingsGenerator Generated code -- this code is regenerated on each build */
 class WindowManagerSetNameParams {
     static unmarshal(pData) {
         const ret = new WindowManagerSetNameParams();
@@ -5376,6 +5438,34 @@ class WindowManagerSetPropertyParams {
             }
             else {
                 ret.Pairs = null;
+            }
+        }
+        return ret;
+    }
+}
+/* TSBindingsGenerator Generated code -- this code is regenerated on each build */
+class WindowManagerSetSolidColorBorderParams {
+    static unmarshal(pData) {
+        const ret = new WindowManagerSetSolidColorBorderParams();
+        {
+            ret.HtmlId = Number(Module.getValue(pData + 0, "*"));
+        }
+        {
+            const ptr = Module.getValue(pData + 4, "*");
+            if (ptr !== 0) {
+                ret.ColorHex = String(Module.UTF8ToString(ptr));
+            }
+            else {
+                ret.ColorHex = null;
+            }
+        }
+        {
+            const ptr = Module.getValue(pData + 8, "*");
+            if (ptr !== 0) {
+                ret.Width = String(Module.UTF8ToString(ptr));
+            }
+            else {
+                ret.Width = null;
             }
         }
         return ret;
