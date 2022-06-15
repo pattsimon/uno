@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
@@ -16,7 +16,7 @@ using ObjCRuntime;
 #if __IOS__
 using UIKit;
 using _View = UIKit.UIView;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 #elif __MACOS__
 using AppKit;
 using _View = AppKit.NSView;

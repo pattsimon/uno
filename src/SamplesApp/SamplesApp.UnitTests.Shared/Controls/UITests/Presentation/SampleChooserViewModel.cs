@@ -1,4 +1,4 @@
-﻿// #define TRACK_REFS
+// #define TRACK_REFS
 
 using System;
 using System.Threading;
@@ -14,7 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Globalization;
 using Windows.UI.Core;
 using Windows.Storage;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using System.IO;
 using Windows.UI.Popups;
 using Uno.Extensions;
@@ -28,13 +28,13 @@ using Uno.Logging;
 #endif
 
 #if XAMARIN || UNO_REFERENCE_API
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 #else
 using Windows.Graphics.Imaging;
 using Windows.Graphics.Display;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media;
 using Windows.UI;
-using Windows.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls;
 #endif
 
 namespace SampleControl.Presentation
@@ -98,7 +98,7 @@ namespace SampleControl.Presentation
 
 #if HAS_UNO
 			// Disable all pooling so that controls get collected quickly.
-			Windows.UI.Xaml.FrameworkTemplatePool.IsPoolingEnabled = false;
+			Microsoft.UI.Xaml.FrameworkTemplatePool.IsPoolingEnabled = false;
 #endif
 #if NETFX_CORE
 			UseFluentStyles = true;
