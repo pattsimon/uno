@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Windows.UI.Xaml.Documents.TextFormatting
+namespace Microsoft.UI.Xaml.Documents.TextFormatting
 {
 	/// <summary>
 	/// Represents the set of segment spans that make up a rendered text line.

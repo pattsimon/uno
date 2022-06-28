@@ -3,13 +3,13 @@ using System;
 
 using Uno.Extensions;
 using System.Globalization;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.Foundation;
-using Windows.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media.Animation;
 using Windows.UI;
 using Uno.UI.Extensions;
 using System.Text.RegularExpressions;
@@ -26,11 +26,11 @@ using Font = UIKit.UIFont;
 
 #if HAS_UNO_WINUI
 using Microsoft.UI.Text;
-using FontWeights = Windows.UI.Text.FontWeights;
+using FontWeights = Microsoft.UI.Text.FontWeights;
 using FontWeight = Windows.UI.Text.FontWeight;
 #else
 using Windows.UI.Text;
-using FontWeights = Windows.UI.Text.FontWeights;
+using FontWeights = Microsoft.UI.Text.FontWeights;
 using FontWeight = Windows.UI.Text.FontWeight;
 #endif
 
@@ -352,9 +352,9 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToIconElement(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Controls.IconElement))
+			if (outputType == typeof(Microsoft.UI.Xaml.Controls.IconElement))
 			{
-				output = (Windows.UI.Xaml.Controls.IconElement)input;
+				output = (Microsoft.UI.Xaml.Controls.IconElement)input;
 				return true;
 			}
 
@@ -363,17 +363,17 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToInputScope(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Input.InputScope))
+			if (outputType == typeof(Microsoft.UI.Xaml.Input.InputScope))
 			{
 				object nameValue = null;
-				if (FastEnumConvert(typeof(Windows.UI.Xaml.Input.InputScopeNameValue), input, ref nameValue))
+				if (FastEnumConvert(typeof(Microsoft.UI.Xaml.Input.InputScopeNameValue), input, ref nameValue))
 				{
-					output = new Windows.UI.Xaml.Input.InputScope
+					output = new Microsoft.UI.Xaml.Input.InputScope
 					{
 						Names = {
-							new Windows.UI.Xaml.Input.InputScopeName
+							new Microsoft.UI.Xaml.Input.InputScopeName
 							{
-								NameValue = (Windows.UI.Xaml.Input.InputScopeNameValue)nameValue
+								NameValue = (Microsoft.UI.Xaml.Input.InputScopeNameValue)nameValue
 							}
 						}
 					};
@@ -387,9 +387,9 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToToolTip(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Controls.ToolTip))
+			if (outputType == typeof(Microsoft.UI.Xaml.Controls.ToolTip))
 			{
-				output = new Windows.UI.Xaml.Controls.ToolTip {Content = input};
+				output = new Microsoft.UI.Xaml.Controls.ToolTip {Content = input};
 				return true;
 			}
 
@@ -495,11 +495,11 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToMatrix(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Media.Matrix))
+			if (outputType == typeof(Microsoft.UI.Xaml.Media.Matrix))
 			{
 				var fields = GetDoubleValues(input);
 
-				output = new Windows.UI.Xaml.Media.Matrix(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
+				output = new Microsoft.UI.Xaml.Media.Matrix(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]);
 				return true;
 			}
 
@@ -565,7 +565,7 @@ namespace Uno.UI.DataBinding
 		{
 			if (outputType == typeof(Windows.UI.Color))
 			{
-				output = Windows.UI.Colors.Parse(input);
+				output = Microsoft.UI.Colors.Parse(input);
 				return true;
 			}
 
@@ -574,9 +574,9 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToImageSource(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Media.ImageSource))
+			if (outputType == typeof(Microsoft.UI.Xaml.Media.ImageSource))
 			{
-				output = (Windows.UI.Xaml.Media.ImageSource)input;
+				output = (Microsoft.UI.Xaml.Media.ImageSource)input;
 				return true;
 			}
 
@@ -801,20 +801,20 @@ namespace Uno.UI.DataBinding
 
 		private static bool FastStringToOrientationConvert(Type outputType, string input, ref object output)
 		{
-			if (outputType == typeof(Windows.UI.Xaml.Controls.Orientation))
+			if (outputType == typeof(Microsoft.UI.Xaml.Controls.Orientation))
 			{
 				switch (input.ToLowerInvariant())
 				{
 					case "vertical":
-						output = Windows.UI.Xaml.Controls.Orientation.Vertical;
+						output = Microsoft.UI.Xaml.Controls.Orientation.Vertical;
 						return true;
 
 					case "horizontal":
-						output = Windows.UI.Xaml.Controls.Orientation.Horizontal;
+						output = Microsoft.UI.Xaml.Controls.Orientation.Horizontal;
 						return true;
 
 					default:
-						throw new InvalidOperationException($"The value {input} is not a valid {nameof(Windows.UI.Xaml.Controls.Orientation)}");
+						throw new InvalidOperationException($"The value {input} is not a valid {nameof(Microsoft.UI.Xaml.Controls.Orientation)}");
 				}
 			}
 

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Windows.UI.ViewManagement;
 
@@ -15,7 +15,7 @@ namespace Uno.UI.RuntimeTests.Tests.Windows_UI_Xaml
 		[RunsOnUIThread]
 		public void CoreWindow_Bounds_Implemented()
 		{ 
-			var w = new Windows.UI.Xaml.Window();
+			var w = new Microsoft.UI.Xaml.Window();
 			var vb = ApplicationView.GetForCurrentView().VisibleBounds; 
 			var SUT = w.CoreWindow.Bounds;
 #if __IOS__
