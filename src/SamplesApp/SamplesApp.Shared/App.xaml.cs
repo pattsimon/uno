@@ -495,6 +495,9 @@ namespace SamplesApp
 			Uno.UI.FeatureConfiguration.DatePicker.UseLegacyStyle = true;
 			Uno.UI.FeatureConfiguration.TimePicker.UseLegacyStyle = true;
 #endif
+#if __SKIA__
+			Uno.UI.FeatureConfiguration.ToolTip.UseToolTips = true;
+#endif
 		}
 
 
